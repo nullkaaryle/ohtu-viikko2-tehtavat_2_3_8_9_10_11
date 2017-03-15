@@ -4,22 +4,23 @@ import java.util.*;
 
 public class Varasto implements Sailytyspaikka {
 
-    private Kirjanpito kirjanpito;
+    private Kirjaaja kirjaaja;
     private HashMap<Tuote, Integer> saldot;
 
-    public Varasto(Kirjanpito kirjanpito) {
-        this.kirjanpito = kirjanpito;
+    public Varasto(Kirjaaja kirjaaja) {
+        this.kirjaaja = kirjaaja;
         saldot = new HashMap<Tuote, Integer>();
         alustaTuotteet();
     }
 
     public Tuote haeTuote(int id) {
         for (Tuote t : saldot.keySet()) {
+            
             if (t.getId() == id) {
                 return t;
             }
         }
-
+        
         return null;
     }
 
@@ -29,12 +30,12 @@ public class Varasto implements Sailytyspaikka {
 
     public void otaVarastosta(Tuote t) {
         saldot.put(t, saldo(t.getId()) - 1);
-        kirjanpito.lisaaTapahtuma("otettiin varastosta " + t);
+        kirjaaja.lisaaTapahtuma("otettiin varastosta " + t);
     }
 
     public void palautaVarastoon(Tuote t) {
         saldot.put(t, saldo(t.getId()) + 1);
-        kirjanpito.lisaaTapahtuma("palautettiin varastoon " + t);
+        kirjaaja.lisaaTapahtuma("palautettiin varastoon " + t);
     }
 
     private void alustaTuotteet() {
