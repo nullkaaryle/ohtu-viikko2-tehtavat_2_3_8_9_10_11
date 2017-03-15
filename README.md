@@ -1,1 +1,5 @@
-# ohtu-viikko2-tehtavat_2_3_8_9_10_11
+### OhTu-viikko2
+
+Tehtävät 
+* 1,2,3
+* 8,9,10,11
