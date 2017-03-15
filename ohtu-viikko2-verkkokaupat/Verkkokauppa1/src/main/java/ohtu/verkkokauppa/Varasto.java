@@ -5,45 +5,38 @@ import java.util.*;
 public class Varasto implements Sailytyspaikka {
 
     private Kirjanpito kirjanpito;
-    private HashMap<Tuote, Integer> saldot; 
-    private static Varasto instanssi;
+    private HashMap<Tuote, Integer> saldot;
 
-    private Varasto() {
-        kirjanpito = Kirjanpito.getInstance();
+    public Varasto(Kirjanpito kirjanpito) {
+        this.kirjanpito = kirjanpito;
         saldot = new HashMap<Tuote, Integer>();
         alustaTuotteet();
     }
-    
-    public static Varasto getInstance() {
-        if (instanssi == null) {
-            instanssi = new Varasto();
+
+    public Tuote haeTuote(int id) {
+        for (Tuote t : saldot.keySet()) {
+            if (t.getId() == id) {
+                return t;
+            }
         }
 
-        return instanssi;
-    }
-            
-    public Tuote haeTuote(int id){
-        for (Tuote t : saldot.keySet()) {
-            if ( t.getId()==id) return t;
-        }
-        
         return null;
     }
 
-    public int saldo(int id){
+    public int saldo(int id) {
         return saldot.get(haeTuote(id));
     }
-    
-    public void otaVarastosta(Tuote t){        
-        saldot.put(t,  saldo(t.getId())-1 );
-        kirjanpito.lisaaTapahtuma("otettiin varastosta "+t);
+
+    public void otaVarastosta(Tuote t) {
+        saldot.put(t, saldo(t.getId()) - 1);
+        kirjanpito.lisaaTapahtuma("otettiin varastosta " + t);
     }
-    
-    public void palautaVarastoon(Tuote t){
-        saldot.put(t,  saldo(t.getId())+1 );
-        kirjanpito.lisaaTapahtuma("palautettiin varastoon "+t);
-    }    
-    
+
+    public void palautaVarastoon(Tuote t) {
+        saldot.put(t, saldo(t.getId()) + 1);
+        kirjanpito.lisaaTapahtuma("palautettiin varastoon " + t);
+    }
+
     private void alustaTuotteet() {
         saldot.put(new Tuote(1, "Koff Portteri", 3), 100);
         saldot.put(new Tuote(2, "Fink Bräu I", 1), 25);
