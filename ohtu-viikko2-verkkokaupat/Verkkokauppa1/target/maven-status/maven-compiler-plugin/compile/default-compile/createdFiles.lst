@@ -1,11 +1,12 @@
 ohtu/verkkokauppa/Ostoskori.class
 ohtu/verkkokauppa/Pankki.class
 ohtu/Main.class
+ohtu/verkkokauppa/Tuote.class
+ohtu/verkkokauppa/Kauppa.class
+ohtu/verkkokauppa/Kirjaaja.class
 ohtu/verkkokauppa/Maksujenkasittelija.class
 ohtu/verkkokauppa/Kirjanpito.class
-ohtu/verkkokauppa/Tuote.class
 ohtu/verkkokauppa/Sailytyspaikka.class
 ohtu/verkkokauppa/Viitegeneraattori.class
 ohtu/verkkokauppa/UudenLuova.class
-ohtu/verkkokauppa/Kauppa.class
 ohtu/verkkokauppa/Varasto.class
